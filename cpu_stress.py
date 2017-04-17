@@ -10,7 +10,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import os
 from flask import Flask
 from multiprocessing import Pool
 
@@ -27,11 +26,11 @@ def busy_work(n):
         n ** n
 
 
+worker_pool = Pool(processes=1)
+worker_pool.map(busy_work, 1)
+
+
 def main():
-    number_of_cpus = int(os.getenv('NUMBER_OF_CPUS'))
-    if number_of_cpus > 0:
-        worker_pool = Pool(processes=number_of_cpus)
-        worker_pool.map(busy_work, range(number_of_cpus))
     app.run()
 
 

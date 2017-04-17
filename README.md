@@ -4,13 +4,7 @@ Quick and dirty container to increase CPU load on a Mesos cluster.
 
 ## Endpoints
 
-- `GET /health`: Always returns `200 OK`
-
-## Configuration
-
-The following environment variables must be defined:
-
-- `NUMBER_OF_CPUS`: Number of CPUs to stress
+- `GET /health`: Always returns `200 OK`. Doesn't ever return in practice due to CPU stress.
 
 ## Development
 
