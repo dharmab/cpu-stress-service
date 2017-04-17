@@ -27,7 +27,7 @@ def busy_work(n):
 
 
 worker_pool = Pool(processes=1)
-worker_pool.map(busy_work, 1)
+worker_pool.map(busy_work, range(1))
 
 
 def main():
