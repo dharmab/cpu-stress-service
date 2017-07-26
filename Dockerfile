@@ -1,11 +1,13 @@
 FROM python:3.6-alpine
 
-RUN apk update && apk add g++ libffi-dev openssl-dev
 
 WORKDIR /app/
 
 ADD requirements.txt /app/
-RUN pip install -r requirements.txt
+RUN apk update \
+		&& apk --no-cache --virtual .build-deps add g++ libffi-dev openssl-dev \
+		&& pip install -r requirements.txt \
+		&& apk del .build-deps
 
 ADD *.py /app/
 
